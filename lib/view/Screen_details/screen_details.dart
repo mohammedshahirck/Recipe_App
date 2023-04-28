@@ -161,6 +161,7 @@ class ScreenDetails extends StatelessWidget {
               color: Colors.grey.shade400,
             ),
             ExpansionTile(
+              initiallyExpanded: true,
               collapsedBackgroundColor: Colors.white,
               title: Row(
                 children: const [

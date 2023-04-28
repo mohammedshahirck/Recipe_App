@@ -7,8 +7,7 @@ class HomeProvider extends ChangeNotifier {
   HomeProvider() {
     getDishes();
   }
-  List<Dish> dishList = [];
-  Dish? model;
+  Recipe? dishList;
 
   bool isLoading = false;
   List<Choice> choice = [
@@ -27,13 +26,13 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void getDishes() async {
+  Future<void> getDishes() async {
     isLoading = true;
     notifyListeners();
     await RecipeService().getDishes().then(
       ((value) {
         if (value != null) {
-          model = value;
+          dishList = value;
           notifyListeners();
           isLoading = false;
         } else {

@@ -12,7 +12,7 @@ class SelectDishes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<HomeProvider>(context, listen: false);
-    print(provider.dishList.length);
+    print(provider.dishList?.dishes.length ?? 0);
     final size = MediaQuery.of(context).size;
 
     return Scaffold(

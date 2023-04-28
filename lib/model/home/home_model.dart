@@ -37,7 +37,7 @@ class Dish {
     required this.id,
   });
 
-  factory Dish.fromJson(Map<String, dynamic> json) => Dish(
+  factory Dish.fromJson(Map<List<dynamic>, dynamic> json) => Dish(
         name: json["name"],
         rating: json["rating"]?.toDouble(),
         description: json["description"],

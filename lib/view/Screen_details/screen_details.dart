@@ -9,13 +9,17 @@ class ScreenDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IconButton(
-                onPressed: () {}, icon: const Icon(Icons.arrow_back_ios_new)),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.arrow_back_ios_new)),
             Stack(
               children: [
                 Container(
@@ -160,46 +164,51 @@ class ScreenDetails extends StatelessWidget {
               height: 1.5,
               color: Colors.grey.shade400,
             ),
-            ExpansionTile(
-              initiallyExpanded: true,
-              collapsedBackgroundColor: Colors.white,
-              title: Row(
-                children: const [
-                  Text(
-                    'Vegetables (05)',
-                  ),
-                  Icon(
-                    Icons.arrow_drop_down,
-                    size: 30,
-                  )
-                ],
+            Theme(
+              data:
+                  Theme.of(context).copyWith(dividerColor: Colors.transparent),
+              child: ExpansionTile(
+                initiallyExpanded: true,
+                collapsedBackgroundColor: Colors.white,
+                title: Row(
+                  children: const [
+                    Text(
+                      'Vegetables (05)',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    Icon(Icons.arrow_drop_down, size: 30, color: Colors.black)
+                  ],
+                ),
+                trailing: const SizedBox(),
+                children: List.generate(3, (index) {
+                  return ListTile(
+                    title: Text('text $index'),
+                  );
+                }).toList(),
               ),
-              trailing: const SizedBox(),
-              children: List.generate(3, (index) {
-                return ListTile(
-                  title: Text('text $index'),
-                );
-              }).toList(),
             ),
-            ExpansionTile(
-              collapsedBackgroundColor: Colors.white,
-              title: Row(
-                children: const [
-                  Text(
-                    'Spices (05)',
-                  ),
-                  Icon(
-                    Icons.arrow_drop_down,
-                    size: 30,
-                  )
-                ],
+            Theme(
+              data:
+                  Theme.of(context).copyWith(dividerColor: Colors.transparent),
+              child: ExpansionTile(
+                initiallyExpanded: true,
+                collapsedBackgroundColor: Colors.white,
+                title: Row(
+                  children: const [
+                    Text(
+                      'Spices (05)',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    Icon(Icons.arrow_drop_down, size: 30, color: Colors.black)
+                  ],
+                ),
+                trailing: const SizedBox(),
+                children: List.generate(3, (index) {
+                  return ListTile(
+                    title: Text('text $index'),
+                  );
+                }).toList(),
               ),
-              trailing: const SizedBox(),
-              children: List.generate(3, (index) {
-                return ListTile(
-                  title: Text('text $index'),
-                );
-              }).toList(),
             ),
             const Text(
               'Appliances',

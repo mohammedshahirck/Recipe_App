@@ -11,9 +11,12 @@ class SelectDishes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<HomeProvider>(context, listen: false);
+    print(provider.dishList.length);
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: IconButton(
@@ -201,7 +204,7 @@ class SelectDishes extends StatelessWidget {
                       color: Colors.white,
                       child: Row(
                         children: [
-                          GestureDetector(
+                          InkWell(
                             onTap: () {},
                             child: SizedBox(
                               child: Row(

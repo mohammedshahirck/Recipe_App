@@ -1,7 +1,16 @@
 import 'package:chefskart/model/choice/choice_model.dart';
+import 'package:chefskart/model/home/home_model.dart';
+import 'package:chefskart/services/home/home_service.dart';
 import 'package:flutter/material.dart';
 
 class HomeProvider extends ChangeNotifier {
+  HomeProvider() {
+    getDishes();
+  }
+  List<Dish> dishList = [];
+  Dish? model;
+
+  bool isLoading = false;
   List<Choice> choice = [
     Choice(name: 'Italian'),
     Choice(name: 'Indian'),
@@ -16,5 +25,22 @@ class HomeProvider extends ChangeNotifier {
       c.isSelected = c == choice;
     }
     notifyListeners();
+  }
+
+  void getDishes() async {
+    isLoading = true;
+    notifyListeners();
+    await RecipeService().getDishes().then(
+      ((value) {
+        if (value != null) {
+          model = value;
+          notifyListeners();
+          isLoading = false;
+        } else {
+          isLoading = false;
+          notifyListeners();
+        }
+      }),
+    );
   }
 }

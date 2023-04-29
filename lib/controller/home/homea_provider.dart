@@ -1,6 +1,7 @@
 import 'package:chefskart/model/choice/choice_model.dart';
 import 'package:chefskart/model/home/home_model.dart';
 import 'package:chefskart/services/home/home_service.dart';
+import 'package:chefskart/view/home/selected_dishes.dart';
 import 'package:flutter/material.dart';
 
 class HomeProvider with ChangeNotifier {
@@ -11,6 +12,7 @@ class HomeProvider with ChangeNotifier {
   loaddata() {
     getDishes();
     getPopularDishes();
+
     notifyListeners();
   }
 
@@ -73,5 +75,14 @@ class HomeProvider with ChangeNotifier {
         }
       }),
     );
+  }
+
+  void splash(context) async {
+    await Future.delayed(const Duration(seconds: 3));
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => const SelectDishes(),
+        ),
+        (route) => false);
   }
 }

@@ -1,5 +1,8 @@
 import 'package:chefskart/controller/home/homea_provider.dart';
+import 'package:chefskart/controller/screen_details/screen_details.dart';
+import 'package:chefskart/view/Screen_details/screen_details.dart';
 import 'package:chefskart/view/home/selected_dishes.dart';
+import 'package:chefskart/view/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,14 +20,18 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => HomeProvider(),
           child: const SelectDishes(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ScreenProvider(),
+          child: const ScreenDetails(),
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: const SelectDishes(),
+        home: const SplashScreen(),
       ),
     );
   }

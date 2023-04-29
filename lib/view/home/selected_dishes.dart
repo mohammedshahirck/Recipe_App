@@ -452,7 +452,7 @@ class SelectDishes extends StatelessWidget {
                                                 width: 75,
                                                 child: OutlinedButton(
                                                     style: OutlinedButton.styleFrom(
-                                                        elevation: 3,
+                                                        elevation: 2,
                                                         shape: RoundedRectangleBorder(
                                                             borderRadius:
                                                                 BorderRadius

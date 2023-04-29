@@ -3,8 +3,16 @@ import 'package:chefskart/services/screen_details/screen_service.dart';
 import 'package:flutter/material.dart';
 
 class ScreenProvider with ChangeNotifier {
+  ScreenProvider() {
+    load();
+  }
+  void load() {
+    getIngrediant();
+    notifyListeners();
+  }
+
   bool isLoading = false;
-  Ingrediants? ingrediants;
+  List<Ingrediants> ingrediants = [];
 
   void getIngrediant() async {
     isLoading = true;

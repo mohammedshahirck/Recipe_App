@@ -1,12 +1,18 @@
+import 'dart:developer';
+
+import 'package:chefskart/controller/screen_details/screen_details.dart';
 import 'package:chefskart/helpers/ksizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class ScreenDetails extends StatelessWidget {
   const ScreenDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ScreenProvider>(context, listen: false);
+    log('${provider.ingrediants[0].ingredients.vegetables.length}');
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,

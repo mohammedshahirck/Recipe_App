@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => HomeProvider(),
+          child: const SelectDishes(),
         )
       ],
       child: MaterialApp(

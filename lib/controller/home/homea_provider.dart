@@ -3,12 +3,12 @@ import 'package:chefskart/model/home/home_model.dart';
 import 'package:chefskart/services/home/home_service.dart';
 import 'package:flutter/material.dart';
 
-class HomeProvider extends ChangeNotifier {
+class HomeProvider with ChangeNotifier {
   HomeProvider() {
     loaddata();
   }
 
-  void loaddata() {
+  loaddata() {
     getDishes();
     getPopularDishes();
     notifyListeners();
@@ -41,6 +41,7 @@ class HomeProvider extends ChangeNotifier {
     await RecipeService().getPopularDishes().then(
       ((value) {
         if (value != null) {
+          notifyListeners();
           populardishes = value;
           notifyListeners();
           isLoading = false;
@@ -60,9 +61,11 @@ class HomeProvider extends ChangeNotifier {
     await RecipeService().getDishes().then(
       ((value) {
         if (value != null) {
+          notifyListeners();
           recipe = value;
           notifyListeners();
           isLoading = false;
+          notifyListeners();
         } else {
           isLoading = false;
           notifyListeners();

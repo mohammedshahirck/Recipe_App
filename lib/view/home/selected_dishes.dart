@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:chefskart/controller/home/homea_provider.dart';
 import 'package:chefskart/helpers/ksizedbox.dart';
 import 'package:chefskart/view/Screen_details/screen_details.dart';
@@ -13,9 +11,10 @@ class SelectDishes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   Provider.of<HomeProvider>(context, listen: false).loaddata();
-    // });
+    Provider.of<HomeProvider>(context, listen: false);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<HomeProvider>(context, listen: false).loaddata();
+    });
     final provider = Provider.of<HomeProvider>(context, listen: false);
 
     final size = MediaQuery.of(context).size;
@@ -433,9 +432,10 @@ class SelectDishes extends StatelessWidget {
                                                         image: DecorationImage(
                                                           fit: BoxFit.fill,
                                                           image: NetworkImage(
-                                                              '${provider.recipe[index].image.toString()}'
-                                                              // 'https://img.freepik.com/premium-photo/chicken-biriyani-using-jeera-rice-arranged-earthenware-with-raitha-grey-background_527904-8.jpg'
-                                                              ),
+                                                              provider
+                                                                  .recipe[index]
+                                                                  .image
+                                                                  .toString()),
                                                         ),
                                                         borderRadius:
                                                             BorderRadius

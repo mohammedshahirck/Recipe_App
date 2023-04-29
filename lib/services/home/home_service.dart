@@ -11,10 +11,10 @@ class RecipeService {
     try {
       final response = await dio.get(baseUrl);
       if (response.statusCode == 200) {
-        log(response.data.toString());
         final result = json.decode(response.data);
         Iterable list = result["dishes"];
-        return list.map((e) => Dish.fromJson(e)).toList();
+        final model = list.map((e) => Dish.fromJson(e)).toList();
+        return model;
       }
     } on DioError catch (e) {
       log(e.toString());
@@ -26,11 +26,10 @@ class RecipeService {
     try {
       final response = await dio.get(baseUrl);
       if (response.statusCode == 200) {
-        log(response.data.toString());
         final result = json.decode(response.data);
         Iterable list = result["popularDishes"];
-
-        return list.map((e) => PopularDish.fromJson(e)).toList();
+        final model = list.map((e) => PopularDish.fromJson(e)).toList();
+        return model;
       }
     } on DioError catch (e) {
       log(e.toString());

@@ -5,10 +5,18 @@ import 'package:flutter/material.dart';
 
 class HomeProvider extends ChangeNotifier {
   HomeProvider() {
-    getDishes();
+    loaddata();
   }
-  List<Recipe> recipe = [];
-  Recipe? dish;
+
+  void loaddata() {
+    getDishes();
+    getPopularDishes();
+    notifyListeners();
+  }
+
+  List<Dish> recipe = [];
+  List<PopularDish> populardishes = [];
+  Dish? dish;
 
   bool isLoading = false;
   List<Choice> choice = [
@@ -27,7 +35,26 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getDishes() async {
+  void getPopularDishes() async {
+    isLoading = true;
+    notifyListeners();
+    await RecipeService().getPopularDishes().then(
+      ((value) {
+        if (value != null) {
+          populardishes = value;
+          notifyListeners();
+          isLoading = false;
+          notifyListeners();
+        } else {
+          isLoading = false;
+          notifyListeners();
+          return null;
+        }
+      }),
+    );
+  }
+
+  void getDishes() async {
     isLoading = true;
     notifyListeners();
     await RecipeService().getDishes().then(
@@ -39,6 +66,7 @@ class HomeProvider extends ChangeNotifier {
         } else {
           isLoading = false;
           notifyListeners();
+          return null;
         }
       }),
     );

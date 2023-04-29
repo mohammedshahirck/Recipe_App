@@ -26,7 +26,7 @@ class Dish {
   String description;
   List<String> equipments;
   String image;
-  int id;
+  dynamic id;
 
   Dish({
     required this.name,
@@ -38,12 +38,12 @@ class Dish {
   });
 
   factory Dish.fromJson(Map<String, dynamic> json) => Dish(
-        name: json["name"],
-        rating: json["rating"]?.toDouble(),
-        description: json["description"],
+        name: json["name"] as String,
+        rating: json["rating"] as double,
+        description: json["description"] as String,
         equipments: List<String>.from(json["equipments"].map((x) => x)),
-        image: json["image"],
-        id: json["id"],
+        image: json["image"] as String,
+        id: json["id"] as int,
       );
 
   Map<String, dynamic> toJson() => {
@@ -59,7 +59,7 @@ class Dish {
 class PopularDish {
   String name;
   String image;
-  int id;
+  dynamic id;
 
   PopularDish({
     required this.name,

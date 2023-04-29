@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:chefskart/controller/home/homea_provider.dart';
 import 'package:chefskart/helpers/ksizedbox.dart';
 import 'package:chefskart/view/Screen_details/screen_details.dart';
@@ -12,7 +14,8 @@ class SelectDishes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<HomeProvider>(context, listen: false);
-    print(provider.dishList?.dishes.length ?? 0);
+    log('${provider.recipe.length}');
+    // print(provider.dishList?.dishes.length ?? 0);
     final size = MediaQuery.of(context).size;
 
     return Scaffold(

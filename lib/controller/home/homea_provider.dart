@@ -7,7 +7,8 @@ class HomeProvider extends ChangeNotifier {
   HomeProvider() {
     getDishes();
   }
-  Recipe? dishList;
+  List<Recipe> recipe = [];
+  Recipe? dish;
 
   bool isLoading = false;
   List<Choice> choice = [
@@ -32,7 +33,7 @@ class HomeProvider extends ChangeNotifier {
     await RecipeService().getDishes().then(
       ((value) {
         if (value != null) {
-          dishList = value;
+          recipe = value;
           notifyListeners();
           isLoading = false;
         } else {

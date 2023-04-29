@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:chefskart/model/home/home_model.dart';
+import 'package:chefskart/utils/exceptions/exceptions.dart';
 import 'package:dio/dio.dart';
 
 class RecipeService {
@@ -17,7 +17,7 @@ class RecipeService {
         return model;
       }
     } on DioError catch (e) {
-      log(e.toString());
+      Exceptions.errorHandler(e);
     }
     return null;
   }
@@ -32,7 +32,7 @@ class RecipeService {
         return model;
       }
     } on DioError catch (e) {
-      log(e.toString());
+      Exceptions.errorHandler(e);
     }
     return null;
   }

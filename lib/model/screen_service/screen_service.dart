@@ -1,6 +1,6 @@
 class Ingrediants {
   String name;
-  int id;
+  dynamic id;
   String timeToPrepare;
   Ingredients ingredients;
 

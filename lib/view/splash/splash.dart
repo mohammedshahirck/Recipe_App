@@ -11,16 +11,19 @@ class SplashScreen extends StatelessWidget {
     final splashController = Provider.of<HomeProvider>(context, listen: false);
     splashController.splash(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: SafeArea(
           child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'ChefKart',
-              style: TextStyle(fontSize: 28),
-            )
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              width: MediaQuery.of(context).size.width / 3,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/1667288236472.jpeg'))),
+            ),
           ],
         ),
       )),

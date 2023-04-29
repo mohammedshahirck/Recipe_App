@@ -12,14 +12,14 @@ class ScreenProvider with ChangeNotifier {
   }
 
   bool isLoading = false;
-  List<Ingrediants> ingrediants = [];
+  Ingrediants? ingrediants;
 
   void getIngrediant() async {
     isLoading = true;
     notifyListeners();
     await ScreenService().getInGrediants().then((value) {
       if (value != null) {
-        ingrediants = value;
+        ingrediants = value as Ingrediants?;
         notifyListeners();
         isLoading = false;
         notifyListeners();
